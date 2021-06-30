@@ -1,23 +1,16 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "counter.h"
+#include "classa.h"
+#include "classb.h"
 
 int main(int argc, char *argv[])
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
-
     QGuiApplication app(argc, argv);
-    qmlRegisterSingletonType<Counter>("Counter", 1, 0, "Counter", &Counter::qmlInstance);
-    QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
+
+    ClassA a;
+    ClassB b;
+    QObject::connect(&a, &ClassA::ASignal, &b, &ClassB::BSlot);
+    emit a.ASignal(20);
 
     return app.exec();
 }
