@@ -1,16 +1,18 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "classa.h"
-#include "classb.h"
+#include "sender.h"
+#include "receiver.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    ClassA a;
-    ClassB b;
-    QObject::connect(&a, &ClassA::ASignal, &b, &ClassB::BSlot);
-    emit a.ASignal(20);
+    Sender a;
+    Receiver b;
+
+    QObject::connect(&a, &Sender::signalMethod, &b, &Receiver::slotMethod);
+
+    emit a.signalMethod(20);
 
     return app.exec();
 }
