@@ -16,9 +16,9 @@ Window {
 
     Text {
         id: count
-        x: 120
+        x: 100
         y: 60
-        text: counter.count
+        text: "Contador"
     }
 
     Button {

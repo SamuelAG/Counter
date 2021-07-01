@@ -3,29 +3,24 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QDebug>
 
 class Counter : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int count READ getCount WRITE setCount NOTIFY updateCount)
 public:
     Counter();
     Q_INVOKABLE void increment() {
         count++;
-        emit updateCount();
+        qDebug()<<"Contador: "<<count;
     }
 
     Q_INVOKABLE void decrement() {
         count--;
-        emit updateCount();
+        qDebug()<<"Contador: "<<count;
     }
-
-    int getCount() { return count; }
-    void setCount(int count) { this->count = count; }
 private:
     int count;
-signals:
-    void updateCount();
 };
 
 #endif // COUNTER_H
