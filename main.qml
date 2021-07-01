@@ -14,6 +14,13 @@ Window {
         id: counter
     }
 
+    Connections {
+        target: counter
+        function onUpdateCount() {
+            console.log("O valor foi alterado")
+        }
+    }
+
     Text {
         id: count
         x: 120
