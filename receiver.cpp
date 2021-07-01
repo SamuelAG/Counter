@@ -5,7 +5,7 @@ Receiver::Receiver()
 
 }
 
-void Receiver::BSlot(int value)
+void Receiver::slotMethod(int value)
 {
     qDebug()<<"Value: "<<value<<" from slot";
 }
