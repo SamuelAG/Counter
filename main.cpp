@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
-    qmlRegisterSingletonType<Counter>("Counter", 1, 0, "Counter", &Counter::qmlInstance);
+    qmlRegisterType<Counter>("Counter", 1, 0, "Counter");
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

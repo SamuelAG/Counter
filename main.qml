@@ -9,11 +9,16 @@ Window {
     visible: true
     title: qsTr("Contador")
     color: "green"
+
+    Counter {
+        id: counter
+    }
+
     Text {
         id: count
         x: 120
         y: 60
-        text: Counter.count
+        text: counter.count
     }
 
     Button {
@@ -21,13 +26,13 @@ Window {
         width: 70
         x: 40
         y: 120
-        onClicked: Counter.increment()
+        onClicked: counter.increment()
     }
     Button {
         text: "-1"
         width: 70
         x: 130
         y: 120
-        onClicked: Counter.decrement()
+        onClicked: counter.decrement()
     }
 }
